@@ -13,4 +13,4 @@ plugins {
 }
 
 rootProject.name = "wordle"
-include("gui", "list", "utilities")
+include("gui", "core")

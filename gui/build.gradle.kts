@@ -19,10 +19,10 @@ repositories {
 dependencies {
     implementation("no.tornado:tornadofx:2.0.0-SNAPSHOT")
     implementation("org.apache.commons:commons-text")
-    implementation(project(":utilities"))
+    implementation(project(":core"))
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.0")
-    testImplementation( "org.assertj:assertj-core:3.23.1")
+    testImplementation("org.assertj:assertj-core:3.23.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.0")
 }
 
