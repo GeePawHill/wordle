@@ -8,10 +8,11 @@ class GameTest {
 
     @Test
     fun `scores strictly`() {
-        assertThat(Game.scoreStrict("AAAAA","AAAAA")).isEqualTo("EEEEE")
-        assertThat(Game.scoreStrict("AAAAA","BBBBB")).isEqualTo("NNNNN")
-        assertThat(Game.scoreStrict("ABCDE","ABABA")).isEqualTo("EENNN")
-        assertThat(Game.scoreStrict("EMAIL","ELOPE")).isEqualTo("EYNNN")
-        assertThat(Game.scoreStrict("CREDO","CREED")).isEqualTo("EEENY")
+        assertThat(Game.scoreStrict("AAAAA", "AAAAA")).isEqualTo("EEEEE")
+        assertThat(Game.scoreStrict("AAAAA", "BBBBB")).isEqualTo("NNNNN")
+        assertThat(Game.scoreStrict("ABCDE", "ABABA")).isEqualTo("EENNN")
+        assertThat(Game.scoreStrict("EMAIL", "ELOPE")).isEqualTo("EYNNN")
+        assertThat(Game.scoreStrict("CREDO", "CREED")).isEqualTo("EEENY")
+        assertThat(Game.scoreStrict("CREED", "CREDO")).isEqualTo("EEEYN")
     }
 }

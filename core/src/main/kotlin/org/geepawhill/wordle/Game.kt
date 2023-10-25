@@ -20,7 +20,7 @@ class Game {
         fun scoreStrict(answer: String, guess: String): Eny {
             val upper = guess.uppercase()
             val indexed = upper.withIndex()
-            val result = mutableListOf('N','N','N','N','N')
+            val result = mutableListOf('N', 'N', 'N', 'N', 'N')
             val pool = answer.toMutableList()
             indexed.forEach { item ->
                 if (upper[item.index] == answer[item.index]) {
@@ -29,13 +29,12 @@ class Game {
                 }
             }
             indexed.forEach { item ->
-                if(result[item.index]!='E') {
-                    if(pool.contains(upper[item.index])) {
+                if (result[item.index] != 'E') {
+                    if (pool.contains(upper[item.index])) {
                         pool.remove(upper[item.index])
-                        result[item.index]='Y'
-                    }
-                    else {
-                        result[item.index]='N'
+                        result[item.index] = 'Y'
+                    } else {
+                        result[item.index] = 'N'
                     }
                 }
             }
