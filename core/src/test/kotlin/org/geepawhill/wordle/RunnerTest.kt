@@ -3,7 +3,8 @@ package org.geepawhill.wordle
 import org.junit.jupiter.api.Test
 
 class RunnerTest {
-    val runner = Runner()
+    val reporter = Reporter()
+    val runner = Runner(reporter)
 
     @Test
     fun `halts on 8 guesses`() {
