@@ -14,5 +14,6 @@ class GameTest {
         assertThat(Game.scoreStrict("EMAIL", "ELOPE")).isEqualTo("EYNNN")
         assertThat(Game.scoreStrict("CREDO", "CREED")).isEqualTo("EEENY")
         assertThat(Game.scoreStrict("CREED", "CREDO")).isEqualTo("EEEYN")
+        assertThat(Game.scoreStrict("YYYAA", "XAXAX")).isEqualTo("NYNEN")
     }
 }
