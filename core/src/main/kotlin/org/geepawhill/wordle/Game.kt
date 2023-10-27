@@ -17,7 +17,10 @@ class Game {
             return result
         }
 
+        var scoreCount = 0
+
         fun scoreStrict(answer: String, guess: String): Eny {
+            scoreCount += 1
             val result = mutableListOf('N', 'N', 'N', 'N', 'N')
             val pool = answer.toMutableList()
             for (item in 0 until 5) {
