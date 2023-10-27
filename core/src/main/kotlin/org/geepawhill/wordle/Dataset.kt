@@ -12,8 +12,8 @@ class Dataset(val guessPath: Path, val solutionPath: Path) {
     constructor() : this(DEFAULT_GUESS_PATH, DEFAULT_SOLUTION_PATH)
 
     init {
-        guesses = Files.readAllLines(guessPath).toSet()
-        solutions = Files.readAllLines(solutionPath).toSet()
+        guesses = Files.readAllLines(guessPath).map { it.uppercase() }.toSet()
+        solutions = Files.readAllLines(solutionPath).map { it.uppercase() }.toSet()
         combined = guesses + solutions
     }
 
