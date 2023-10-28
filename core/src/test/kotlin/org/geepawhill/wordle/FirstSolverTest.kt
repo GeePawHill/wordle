@@ -7,13 +7,19 @@ class FirstSolverTest {
     val reporter = Reporter()
 
     @Test
-    fun `run on one`() {
-        val solver = FirstSolver(dataset, "RATOS")
+    fun `run on all`() {
+        val solver = FirstSolver(dataset, "SAOLA")
         val runner = Runner(reporter)
-        var solutions = 0
+        runner.run(solver, dataset)
+    }
+
+    @Test
+    fun `run on one`() {
+        val solver = FirstSolver(dataset, "SAOLA")
+        val runner = Runner(reporter)
         dataset.solutions.forEach {
-            println(solutions++)
             runner.run(solver, it)
         }
+        reporter.endBatch()
     }
 }

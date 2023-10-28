@@ -3,6 +3,7 @@ package org.geepawhill.wordle
 import org.assertj.core.api.AssertionsForClassTypes.assertThat
 import org.geepawhill.wordle.Game.Companion.scoreCount
 import org.junit.jupiter.api.Assertions.assertThrows
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 class EnyMapTest {
@@ -23,6 +24,7 @@ class EnyMapTest {
         assertThat(map.pick("YYEYY")).isEqualTo("EDCBA")
     }
 
+    @Disabled("Long")
     @Test
     fun `make all words on solutions`() {
         val dataset = Dataset()

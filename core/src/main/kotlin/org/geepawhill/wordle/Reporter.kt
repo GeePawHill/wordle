@@ -5,9 +5,16 @@ typealias NanoSeconds = Long
 class Reporter {
 
     val guesses = mutableListOf<String>()
+    var totalRuns = 0
+    var totalGuesses = 0
 
     fun startBatch(id: String, elapsed: NanoSeconds) {
-        println("$id batch, $elapsed")
+        totalRuns = 0
+        totalGuesses = 0
+    }
+
+    fun endBatch() {
+        println("Average path: " + totalGuesses.toDouble() / totalRuns.toDouble())
     }
 
     fun startRun() {
@@ -19,6 +26,8 @@ class Reporter {
     }
 
     fun endRun(answer: String, elapsed: NanoSeconds) {
-        println("Run Over: [$answer] ${guesses.size} ${guesses.joinToString(" ")} ns:$elapsed ")
+        totalGuesses += guesses.size
+        totalRuns += 1
+        println("[$answer] ${guesses.size} ${guesses.joinToString(" ")}")
     }
 }

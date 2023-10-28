@@ -22,7 +22,7 @@ class EnyMap {
             val map = EnyMap()
             for (answer in answers) {
                 val result = Game.scoreStrict(answer, guess)
-                if (result.equals("YYYYY")) continue
+                if (result.equals("EEEEE")) continue
                 if (result.equals("NNNNN")) continue
                 map.add(result, answer)
             }

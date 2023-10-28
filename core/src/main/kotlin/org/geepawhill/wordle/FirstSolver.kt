@@ -17,6 +17,7 @@ class FirstSolver(val dataset: Dataset, val first: String) : Solver {
     }
 
     override fun first(): String {
+        lastSolution = dataset.solutions
         lastGuess = first
         return first
     }
