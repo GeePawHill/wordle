@@ -28,7 +28,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass.set("org.geepawhill.wordle.AppKt")
+    mainClass.set("org.geepawhill.wordle.MainKt")
 }
 
 kotlin {
@@ -49,6 +49,8 @@ javafx {
         "javafx.controls",
         "javafx.graphics",
         "javafx.fxml",
-        "javafx.web"
+        "javafx.web",
+        "javafx.base",
+        "javafx.media"
     )
 }

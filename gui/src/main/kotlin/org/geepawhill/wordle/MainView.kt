@@ -1,8 +1,15 @@
 package org.geepawhill.wordle
 
-import tornadofx.View
-import tornadofx.borderpane
+import tornadofx.*
 
-class MainView : View() {
-    override val root = borderpane { }
+class MainView(val datasetModel: DatasetModel) : View() {
+    override val root = borderpane {
+        minHeight = 1000.0
+        minWidth = 1500.0
+        center = tabpane {
+            tab("Dataset") {
+                this += DatasetView(datasetModel)
+            }
+        }
+    }
 }
