@@ -8,18 +8,8 @@ class FirstSolverTest {
 
     @Test
     fun `run on all`() {
-        val solver = FirstSolver(dataset, "SAOLA")
+        val solver = FirstSolver(dataset, "TALER")
         val runner = Runner(reporter)
         runner.run(solver, dataset)
-    }
-
-    @Test
-    fun `run on one`() {
-        val solver = FirstSolver(dataset, "SAOLA")
-        val runner = Runner(reporter)
-        dataset.solutions.forEach {
-            runner.run(solver, it)
-        }
-        reporter.endBatch()
     }
 }
