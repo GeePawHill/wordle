@@ -18,13 +18,12 @@ class EnyMap {
     }
 
     companion object {
-        fun makeEnyMap(guess: String, answers: Set<String>): EnyMap {
+        fun makeEnyMap(guess: String, solutions: Set<String>): EnyMap {
             val map = EnyMap()
-            for (answer in answers) {
-                val result = Game.scoreStrict(answer, guess)
-                if (result.equals("EEEEE")) continue
-                if (result.equals("NNNNN")) continue
-                map.add(result, answer)
+            for (solution in solutions) {
+                val eny = Game.scoreStrict(solution, guess)
+                if (eny.equals("EEEEE")) continue
+                map.add(eny, solution)
             }
             //map.callOutOneSolution(guess)
             return map

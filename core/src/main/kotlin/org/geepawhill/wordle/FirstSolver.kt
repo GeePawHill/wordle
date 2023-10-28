@@ -28,7 +28,6 @@ class FirstSolver(val dataset: Dataset, val first: String) : Solver {
     }
 
     override fun next(eny: String): String {
-        if (eny == "NNNNN") return newGuess()
         val new = fullMap[lastGuess]!!.map[eny]!!
         lastSolution = lastSolution.intersect(new)
         lastGuess = lastSolution.random()
