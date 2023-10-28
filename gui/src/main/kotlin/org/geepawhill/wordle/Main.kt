@@ -6,22 +6,14 @@ package org.geepawhill.wordle
 import javafx.application.Application
 import javafx.scene.Scene
 import javafx.stage.Stage
-import tornadofx.View
-import tornadofx.borderpane
 
 
-class WordleView : View() {
-    override val root = borderpane { }
-
-
-}
-
-class App : Application() {
+class Main : Application() {
 
     override fun start(primaryStage: Stage?) {
         val controller = primaryStage!!
-        val wordleView = WordleView()
-        controller.scene = Scene(wordleView.root)
+        val mainView = MainView()
+        controller.scene = Scene(mainView.root)
         controller.isMaximized = true
         controller.show()
     }
@@ -29,5 +21,5 @@ class App : Application() {
 
 
 fun main(args: Array<String>) {
-    Application.launch(App::class.java, *args)
+    Application.launch(Main::class.java, *args)
 }
