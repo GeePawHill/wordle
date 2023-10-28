@@ -7,15 +7,11 @@ import javafx.stage.Stage
 
 class Main : Application() {
 
-    val datasetModel = DatasetModel()
-
-    init {
-        datasetModel.load(Dataset())
-    }
+    val mainModel = MainModel()
 
     override fun start(primaryStage: Stage?) {
         val controller = primaryStage!!
-        val mainView = MainView(datasetModel)
+        val mainView = MainView(mainModel)
         controller.scene = Scene(mainView.root)
         controller.show()
     }

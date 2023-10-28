@@ -18,7 +18,7 @@ class Dataset(val guessPath: Path, val solutionPath: Path) {
     }
 
     companion object {
-        val DEFAULT_GUESS_PATH: Path = Path.of("../data/valid_guesses.txt").toAbsolutePath()
-        val DEFAULT_SOLUTION_PATH: Path = Path.of("../data/valid_solutions.txt").toAbsolutePath()
+        val DEFAULT_GUESS_PATH: Path = Path.of("../data/valid_guesses.txt").toAbsolutePath().normalize()
+        val DEFAULT_SOLUTION_PATH: Path = Path.of("../data/valid_solutions.txt").toAbsolutePath().normalize()
     }
 }

@@ -8,7 +8,7 @@ class FirstSolverTest {
 
     @Test
     fun `run on all`() {
-        val solver = FirstSolver(dataset, "TALER")
+        val solver = FirstSolver(dataset, "RUGBY")
         val runner = Runner(reporter)
         runner.run(solver, dataset)
     }
