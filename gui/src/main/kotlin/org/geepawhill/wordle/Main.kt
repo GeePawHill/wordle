@@ -9,6 +9,10 @@ class Main : Application() {
 
     val datasetModel = DatasetModel()
 
+    init {
+        datasetModel.load(Dataset())
+    }
+
     override fun start(primaryStage: Stage?) {
         val controller = primaryStage!!
         val mainView = MainView(datasetModel)
