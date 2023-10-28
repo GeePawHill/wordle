@@ -13,6 +13,7 @@ class FirstSolver(val dataset: Dataset, val first: String) : Solver {
             }
         }
         lastGuess = first()
+        lastSolution = dataset.solutions
     }
 
     override fun first(): String {
@@ -21,6 +22,7 @@ class FirstSolver(val dataset: Dataset, val first: String) : Solver {
     }
 
     override fun next(eny: String): String {
+        if (eny == "NNNNN") return first
         val new = fullMap[lastGuess]!!.map[eny]!!
         lastSolution = lastSolution.intersect(new)
         lastGuess = lastSolution.first()
