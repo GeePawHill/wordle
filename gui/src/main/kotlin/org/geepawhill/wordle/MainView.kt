@@ -10,6 +10,9 @@ class MainView(val mainModel: MainModel) : View() {
             tab("Dataset") {
                 this += DatasetView(mainModel.datasetModel)
             }
+            tab("FirstSolvert") {
+                this += FirstSolverView(mainModel.firstSolverModel)
+            }
         }
     }
 }
