@@ -1,6 +1,6 @@
 package org.geepawhill.wordle
 
-class FirstSolver(val dataset: Dataset, val first: String) : Solver {
+class FirstSolver(val dataset: Dataset, var first: String) : Solver {
 
     val fullMap: MutableMap<String, EnyMap> = mutableMapOf();
     var lastGuess = first

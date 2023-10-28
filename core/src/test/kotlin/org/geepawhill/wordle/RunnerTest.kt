@@ -3,7 +3,7 @@ package org.geepawhill.wordle
 import org.junit.jupiter.api.Test
 
 class RunnerTest {
-    val reporter = Reporter()
+    val reporter = ConsoleReporter()
     val runner = Runner(reporter)
 
     @Test

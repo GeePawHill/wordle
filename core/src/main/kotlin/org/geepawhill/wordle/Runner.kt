@@ -1,7 +1,7 @@
 package org.geepawhill.wordle
 
 
-class Runner(val reporter: Reporter) {
+class Runner(val reporter: ConsoleReporter) {
 
     fun run(solver: Solver, answer: String) {
         val batchStarted = System.nanoTime()
