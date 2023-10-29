@@ -1,10 +1,14 @@
 package org.geepawhill.wordle
 
+import kotlin.random.Random
+
 class FirstSolver(val dataset: Dataset, var first: String) : Solver {
 
     val fullMap: MutableMap<String, EnyMap> = mutableMapOf();
     var lastGuess = first
     var lastSolution: Set<String> = dataset.solutions
+
+    var random = Random(0)
 
     override fun prepare() {
         if (fullMap.isEmpty()) {
@@ -14,6 +18,7 @@ class FirstSolver(val dataset: Dataset, var first: String) : Solver {
         }
         lastGuess = first()
         lastSolution = dataset.solutions
+        random = Random(0)
     }
 
     override fun first(): String {
@@ -25,7 +30,7 @@ class FirstSolver(val dataset: Dataset, var first: String) : Solver {
     override fun next(eny: String): String {
         val new = fullMap[lastGuess]!!.map[eny]!!
         lastSolution = lastSolution.intersect(new)
-        lastGuess = lastSolution.random()
+        lastGuess = lastSolution.random(random)
         return lastGuess
     }
 

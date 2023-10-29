@@ -8,13 +8,13 @@ class FirstSolverTest {
 
     @Test
     fun `run on all`() {
-        val solver = FirstSolver(dataset, "RUGBY")
+        val solver = FirstSolver(dataset, "SOLAR")
         solver.prepare()
         val runner = Runner(reporter)
         var startTime = System.nanoTime()
         runner.run(solver, dataset)
         println((System.nanoTime() - startTime) / 1000000.0)
-        solver.first = "SOLAR"
+        solver.first = "RUGBY"
         startTime = System.nanoTime()
         runner.run(solver, dataset)
         println((System.nanoTime() - startTime) / 1000000.0)
