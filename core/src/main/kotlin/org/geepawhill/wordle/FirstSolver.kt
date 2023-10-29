@@ -29,4 +29,8 @@ class FirstSolver(val dataset: Dataset, var first: String) : Solver {
         return lastGuess
     }
 
+    override fun id(): String {
+        return first
+    }
+
 }

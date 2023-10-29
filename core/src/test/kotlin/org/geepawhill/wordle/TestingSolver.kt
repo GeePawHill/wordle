@@ -18,4 +18,8 @@ class TestingSolver(val guesses: List<String>) : Solver {
     override fun next(eny: String): String {
         return guesses[next++]
     }
+
+    override fun id(): String {
+        return "Testing Solver"
+    }
 }

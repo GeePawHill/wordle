@@ -22,7 +22,7 @@ class ConsoleReporter : Reporter {
         println("Average path: " + totalGuesses.toDouble() / totalRuns.toDouble())
     }
 
-    override fun startRun() {
+    override fun startRun(id: String) {
         guesses.clear()
     }
 

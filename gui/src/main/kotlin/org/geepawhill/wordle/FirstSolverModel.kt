@@ -31,7 +31,7 @@ class FirstSolverModel(val dataset: Dataset) : Reporter {
     override fun endBatch() {
     }
 
-    override fun startRun() {
+    override fun startRun(id: String) {
         guesses.clear()
     }
 

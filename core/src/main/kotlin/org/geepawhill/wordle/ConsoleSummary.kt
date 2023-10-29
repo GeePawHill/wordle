@@ -7,6 +7,7 @@ class ConsoleSummary : Reporter {
     var totalGuesses = 0
     var wins = 0
     var losses = 0
+    var id = "N/A"
 
     override fun startBatch(id: String) {
         totalRuns = 0
@@ -16,11 +17,13 @@ class ConsoleSummary : Reporter {
     }
 
     override fun endBatch() {
-        println("Win/Loss/Total $wins/$losses/${wins + losses}")
+        println("$id: $wins/$losses/${wins + losses}")
+        println("Total Guesses: $totalGuesses")
         println("Average path: " + totalGuesses.toDouble() / totalRuns.toDouble())
     }
 
-    override fun startRun() {
+    override fun startRun(id: String) {
+        this.id = id
         guesses.clear()
     }
 
