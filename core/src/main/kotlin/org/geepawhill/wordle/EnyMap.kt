@@ -1,11 +1,11 @@
 package org.geepawhill.wordle
 
 class EnyMap {
-    val map = mutableMapOf<String, MutableList<String>>()
+    val map = mutableMapOf<String, MutableSet<String>>()
     var oneSolutionLists = 0
 
     fun add(eny: Eny, answer: String) {
-        val list = map.getOrDefault(eny, mutableListOf())
+        val list = map.getOrDefault(eny, mutableSetOf())
         list.add(answer)
         map[eny] = list
     }
@@ -14,7 +14,7 @@ class EnyMap {
         val list = map.getOrElse(eny) {
             throw EmptyEnvMapItem(eny)
         }
-        return list[0]
+        return list.first()
     }
 
     companion object {
@@ -33,7 +33,7 @@ class EnyMap {
     private fun callOutOneSolution(guess: String): Boolean {
         for (entry in map.entries) {
             if (entry.value.size == 1) {
-                println("Guess|Eny $guess|${entry.key} has one solution: ${entry.value.get(0)}")
+                println("Guess|Eny $guess|${entry.key} has one solution: ${entry.value.first()}")
                 oneSolutionLists += 1
                 return true
             }
