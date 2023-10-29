@@ -1,12 +1,11 @@
 package org.geepawhill.wordle
 
 
-class Runner(val reporter: ConsoleReporter) {
+class Runner(val reporter: Reporter) {
 
     fun run(solver: Solver, answer: String) {
-        val batchStarted = System.nanoTime()
         solver.prepare()
-        reporter.startBatch(solver.javaClass.simpleName, System.nanoTime() - batchStarted);
+        reporter.startBatch(solver.javaClass.simpleName);
         val runStarted = System.nanoTime()
         reporter.startRun()
         var guess = solver.first()
@@ -16,15 +15,13 @@ class Runner(val reporter: ConsoleReporter) {
             if (result == "EEEEE") break
             guess = solver.next(result)
         }
-        reporter.endRun(answer, System.nanoTime() - runStarted)
+        reporter.endRun(answer)
     }
 
     fun run(solver: Solver, dataset: Dataset) {
-        val batchStarted = System.nanoTime()
         solver.prepare()
-        reporter.startBatch(solver.javaClass.simpleName, System.nanoTime() - batchStarted);
+        reporter.startBatch(solver.javaClass.simpleName);
         for (answer in dataset.solutions) {
-            val runStarted = System.nanoTime()
             reporter.startRun()
             var guess = solver.first()
             for (attempt in 0 until 7) {
@@ -33,7 +30,7 @@ class Runner(val reporter: ConsoleReporter) {
                 if (result == "EEEEE") break
                 guess = solver.next(result)
             }
-            reporter.endRun(answer, System.nanoTime() - runStarted)
+            reporter.endRun(answer)
         }
         reporter.endBatch()
     }

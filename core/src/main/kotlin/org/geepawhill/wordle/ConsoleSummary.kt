@@ -1,8 +1,6 @@
 package org.geepawhill.wordle
 
-typealias NanoSeconds = Long
-
-class ConsoleReporter : Reporter {
+class ConsoleSummary : Reporter {
 
     val guesses = mutableListOf<String>()
     var totalRuns = 0
@@ -35,6 +33,5 @@ class ConsoleReporter : Reporter {
         totalRuns += 1
         if (guesses.size == 7) losses += 1
         else wins += 1
-        println("[$answer] ${guesses.size} ${guesses.joinToString(" ")}")
     }
 }
