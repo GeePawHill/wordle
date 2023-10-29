@@ -17,29 +17,25 @@ class Game {
             return result
         }
 
-        var scoreCount = 0
 
         fun scoreStrict(answer: String, guess: String): Eny {
-            scoreCount += 1
             val result = mutableListOf('N', 'N', 'N', 'N', 'N')
             val pool = answer.toMutableList()
+            val indices = mutableListOf<Int>()
             for (item in 0 until 5) {
                 if (guess[item] == answer[item]) {
                     result[item] = 'E'
                     pool.remove(answer[item])
+                } else {
+                    indices += item
                 }
             }
-            for (item in 0 until 5) {
-                if (result[item] != 'E') {
-                    if (pool.contains(guess[item])) {
-                        pool.remove(guess[item])
-                        result[item] = 'Y'
-                    }
+            for (item in indices) {
+                if (pool.remove(guess[item])) {
+                    result[item] = 'Y'
                 }
             }
-            val eny = result.joinToString("")
-//            println("$answer : $guess -> $eny")
-            return eny
+            return result.joinToString("")
         }
     }
 }

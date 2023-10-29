@@ -1,7 +1,6 @@
 package org.geepawhill.wordle
 
 import org.assertj.core.api.AssertionsForClassTypes.assertThat
-import org.geepawhill.wordle.Game.Companion.scoreCount
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
@@ -19,7 +18,7 @@ class EnyMapTest {
     @Test
     fun `make on list works`() {
         val map = EnyMap.makeEnyMap("ABCDE", setOf("ABCDF", "EDCBA"))
-        System.out.println(map.map)
+        println(map.map)
         assertThat(map.pick("EEEEN")).isEqualTo("ABCDF")
         assertThat(map.pick("YYEYY")).isEqualTo("EDCBA")
     }
@@ -28,7 +27,6 @@ class EnyMapTest {
     @Test
     fun `make all words on solutions`() {
         val dataset = Dataset()
-        scoreCount = 0
         val start = System.nanoTime()
         val fullMap = mutableMapOf<String, EnyMap>()
         for (guess in dataset.combined) {
@@ -38,7 +36,6 @@ class EnyMapTest {
             )
         }
         println((System.nanoTime() - start) / 1000000L)
-        println(scoreCount)
         val enySizes = fullMap.map { it.value.map.size }
         println("Average enyMap size: " + enySizes.average())
         println("Maximum enyMap size: " + enySizes.max())
