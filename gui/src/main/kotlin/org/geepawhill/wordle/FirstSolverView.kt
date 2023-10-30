@@ -33,9 +33,18 @@ class FirstSolverView(model: FirstSolverModel) : Fragment() {
         }
         center = tableview(model.batches) {
             columnResizePolicy = SmartResize.POLICY
-            readonlyColumn("ID", Batch::id)
-            readonlyColumn("W", Batch::wins)
-            readonlyColumn("Average", Batch::totalGuesses)
+            readonlyColumn("ID", Batch::id).cellFormat {
+                text = it
+                font = Styles.textFont
+            }
+            readonlyColumn("Losses", Batch::losses).cellFormat {
+                text = it.toString()
+                font = Styles.textFont
+            }
+            readonlyColumn("Average", Batch::averagePath).cellFormat {
+                text = it.toString()
+                font = Styles.textFont
+            }
             rowExpander(expandOnDoubleClick = true) {
                 paddingLeft = expanderColumn.width
                 tableview(it.problems) {

@@ -6,7 +6,6 @@ class Runner(val reporter: Reporter) {
     fun run(solver: Solver, answer: String) {
         solver.prepare()
         reporter.startBatch(solver.javaClass.simpleName);
-        val runStarted = System.nanoTime()
         reporter.startRun(solver.id())
         var guess = solver.first()
         for (attempt in 0 until 7) {
