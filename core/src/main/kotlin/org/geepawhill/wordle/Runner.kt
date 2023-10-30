@@ -8,7 +8,7 @@ class Runner(val reporter: Reporter) {
         reporter.startBatch(solver.javaClass.simpleName);
         reporter.startRun(solver.id())
         var guess = solver.first()
-        for (attempt in 0 until 7) {
+        while (true) {
             val result = Game.scoreStrict(answer, guess)
             reporter.guess(guess, result)
             if (result == "EEEEE") break
@@ -19,7 +19,7 @@ class Runner(val reporter: Reporter) {
 
     fun run(solver: Solver, dataset: Dataset) {
         solver.prepare()
-        reporter.startBatch(solver.javaClass.simpleName);
+        reporter.startBatch(solver.first());
         for (answer in dataset.solutions) {
             reporter.startRun(solver.id())
             var guess = solver.first()

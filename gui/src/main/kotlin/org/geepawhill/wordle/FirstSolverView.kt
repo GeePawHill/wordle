@@ -30,6 +30,13 @@ class FirstSolverView(model: FirstSolverModel) : Fragment() {
                     model.runSolutions()
                 }
             }
+
+            button("Super Run") {
+                font = Styles.textFont
+                action {
+                    model.superRun()
+                }
+            }
         }
         center = tableview(model.batches) {
             columnResizePolicy = SmartResize.POLICY

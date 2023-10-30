@@ -2,6 +2,7 @@ package org.geepawhill.wordle
 
 import javafx.beans.property.SimpleBooleanProperty
 import javafx.beans.property.SimpleStringProperty
+import javafx.collections.ObservableList
 import tornadofx.*
 
 class Problem(val answer: String, guesses: List<String>) {
@@ -10,15 +11,7 @@ class Problem(val answer: String, guesses: List<String>) {
     val win = guesses.size < 7
 }
 
-class Batch(val id: String, val averagePath: Double) {
-    val problems = observableListOf<Problem>()
-    var losses = 0
-    var totalGuesses = 0
-    fun add(problem: Problem) {
-        problems.add(problem)
-        if (!problem.win) losses += 1
-        totalGuesses += problem.size
-    }
+class Batch(val id: String, val averagePath: Double, val losses: Int, val problems: ObservableList<Problem>) {
 }
 
 class FirstSolverModel(val dataset: Dataset) : Reporter {
@@ -32,9 +25,10 @@ class FirstSolverModel(val dataset: Dataset) : Reporter {
     val guesses = mutableListOf<String>()
 
     var batchId = "N/A"
-    val problems = mutableListOf<Problem>()
+    var problems = observableListOf<Problem>()
     var totalRuns = 0
     var totalGuesses = 0
+    var totalLosses = 0
 
     fun prepare() {
         solver.prepare()
@@ -53,12 +47,12 @@ class FirstSolverModel(val dataset: Dataset) : Reporter {
         batchId = id
         totalRuns = 0
         totalGuesses = 0
-        problems.clear()
+        totalLosses = 0
+        problems = observableListOf()
     }
 
     override fun endBatch() {
-        val batch = Batch(batchId, totalGuesses.toDouble() / totalRuns.toDouble())
-        for (problem in problems) batch.add(problem)
+        val batch = Batch(batchId, totalGuesses.toDouble() / totalRuns.toDouble(), totalLosses, problems)
         runLater {
             batches.add(batch)
         }
@@ -76,13 +70,27 @@ class FirstSolverModel(val dataset: Dataset) : Reporter {
 
     override fun endRun(answer: String) {
         val problem = Problem(answer, guesses)
+        if (!problem.win) totalLosses += 1
         problems.add(problem)
     }
 
     fun runSolutions() {
-        for (solution in dataset.solutions) {
-            firstGuess.value = solution
-            run2315()
+        val runner = Runner(this)
+        task {
+            for (solution in dataset.solutions) {
+                solver.first = solution
+                runner.run(solver, dataset)
+            }
+        }
+    }
+
+    fun superRun() {
+        val runner = Runner(this)
+        task {
+            for (solution in dataset.combined) {
+                solver.first = solution
+                runner.run(solver, dataset)
+            }
         }
     }
 }

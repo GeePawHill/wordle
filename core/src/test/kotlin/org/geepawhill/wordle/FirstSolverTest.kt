@@ -8,7 +8,7 @@ class FirstSolverTest {
 
     @Test
     fun `run on all`() {
-        val solver = FirstSolver(dataset, "SOLAR")
+        val solver = FirstSolver(dataset, "SALET")
         solver.prepare()
         val runner = Runner(reporter)
         var startTime = System.nanoTime()
