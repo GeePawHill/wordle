@@ -4,6 +4,7 @@ class MainModel {
     val dataset = Dataset()
     val datasetModel = DatasetModel()
     val firstSolverModel = FirstSolverModel(dataset)
+    val maxInfoModel = MaxInfoModel(dataset)
 
 
     init {

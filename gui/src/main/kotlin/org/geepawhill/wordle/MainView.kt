@@ -10,8 +10,11 @@ class MainView(val mainModel: MainModel) : View() {
             tab("Dataset") {
                 this += DatasetView(mainModel.datasetModel)
             }
-            tab("FirstSolvert") {
+            tab("FirstSolver") {
                 this += FirstSolverView(mainModel.firstSolverModel)
+            }
+            tab("MaxInfoSolver") {
+                this += MaxInfoSolverView(mainModel.maxInfoModel)
             }
         }
     }

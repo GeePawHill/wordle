@@ -1,16 +1,14 @@
 package org.geepawhill.wordle
 
 import javafx.beans.property.SimpleBooleanProperty
-import javafx.beans.property.SimpleStringProperty
 import tornadofx.*
 
-class FirstSolverModel(val dataset: Dataset) : Reporter, BatchModel {
+class MaxInfoModel(val dataset: Dataset) : Reporter, BatchModel {
 
     val needsPreparing = SimpleBooleanProperty(true)
     override val batches = observableListOf<Batch>()
 
-    val firstGuess = SimpleStringProperty("VALOR")
-    val solver = FirstSolver(dataset, firstGuess.value)
+    val solver = MaxInfoSolver(dataset)
 
     val guesses = mutableListOf<String>()
 
@@ -27,7 +25,6 @@ class FirstSolverModel(val dataset: Dataset) : Reporter, BatchModel {
 
     fun run2315() {
         val runner = Runner(this)
-        solver.first = firstGuess.value
         task {
             runner.run(solver, dataset)
         }
@@ -62,25 +59,5 @@ class FirstSolverModel(val dataset: Dataset) : Reporter, BatchModel {
         val problem = Problem(answer, guesses)
         if (!problem.win) totalLosses += 1
         problems.add(problem)
-    }
-
-    fun runSolutions() {
-        val runner = Runner(this)
-        task {
-            for (solution in dataset.solutions) {
-                solver.first = solution
-                runner.run(solver, dataset)
-            }
-        }
-    }
-
-    fun superRun() {
-        val runner = Runner(this)
-        task {
-            for (solution in dataset.combined) {
-                solver.first = solution
-                runner.run(solver, dataset)
-            }
-        }
     }
 }

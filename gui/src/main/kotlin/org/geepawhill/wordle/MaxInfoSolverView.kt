@@ -3,7 +3,7 @@ package org.geepawhill.wordle
 import javafx.scene.Parent
 import tornadofx.*
 
-class FirstSolverView(model: FirstSolverModel) : Fragment() {
+class MaxInfoSolverView(model: MaxInfoModel) : Fragment() {
 
     override val root: Parent = borderpane {
         top = toolbar {
@@ -14,27 +14,10 @@ class FirstSolverView(model: FirstSolverModel) : Fragment() {
                     model.prepare()
                 }
             }
-            textfield(model.firstGuess) {
-                font = Styles.textFont
-            }
             button("Run 2315") {
                 font = Styles.textFont
                 action {
                     model.run2315()
-                }
-            }
-
-            button("Run Solutions") {
-                font = Styles.textFont
-                action {
-                    model.runSolutions()
-                }
-            }
-
-            button("Super Run") {
-                font = Styles.textFont
-                action {
-                    model.superRun()
                 }
             }
         }
